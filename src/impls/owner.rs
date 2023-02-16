@@ -1,4 +1,5 @@
 use crate::interfaces::OwnerAction;
+use crate::utils::merge_token_metadata;
 use crate::*;
 
 #[near_bindgen]
@@ -13,17 +14,22 @@ impl OwnerAction for Contract {
         self.metadata.set(&metadata)
     }
 
-    fn add_creator_whitelist(&mut self, account_ids: Vec<AccountId>) {
+    fn batch_mint_nfts(
+        &mut self,
+        base_metadata: TokenMetadata,
+        owner_and_tokens: Vec<(AccountId, TokenMetadata)>,
+    ) {
         self.assert_owner();
-        for account_id in account_ids {
-            self.creator_whitelist.insert(&account_id);
-        }
-    }
 
-    fn remove_creator_whitelist(&mut self, account_ids: Vec<AccountId>) {
-        self.assert_owner();
-        for account_id in account_ids {
-            self.creator_whitelist.remove(&account_id);
+        for owner_and_token in owner_and_tokens {
+            let nft_owner_id = owner_and_token.0;
+            let token_id = format!("{}:{}", env::block_timestamp(), nft_owner_id).to_string();
+
+            self.token.internal_mint(
+                token_id.clone(),
+                nft_owner_id,
+                Some(merge_token_metadata(&base_metadata, &owner_and_token.1)),
+            );
         }
     }
 }

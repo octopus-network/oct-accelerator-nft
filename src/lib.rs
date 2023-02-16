@@ -1,8 +1,3 @@
-mod impls;
-mod interfaces;
-mod types;
-
-use crate::types::{ActivityCreatorId, ActivityId, Uuid};
 use near_contract_standards::non_fungible_token::metadata::{
     NFTContractMetadata, NonFungibleTokenMetadataProvider, TokenMetadata,
 };
@@ -14,34 +9,24 @@ use near_sdk::{env, Balance, Promise, StorageUsage};
 use near_sdk::{log, AccountId, PromiseOrValue};
 use near_sdk::{near_bindgen, BorshStorageKey, PanicOnDefault};
 
+mod impls;
+mod interfaces;
+mod utils;
+
 #[derive(BorshSerialize, BorshStorageKey)]
 enum StorageKey {
     NonFungibleToken,
     Metadata,
     Enumeration,
     Approval,
-    CreatorWhitelist,
-    Activities,
-    ActivityTokens,
-    ActivityTokensInner { activity_id: ActivityId },
-    TokenActivity,
-    ActivitiesByCreators,
-    ActivityTokenMetadata,
 }
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
 pub struct Contract {
     owner: AccountId,
-    uuid: Uuid,
     token: NonFungibleToken,
     metadata: LazyOption<NFTContractMetadata>,
-    creator_whitelist: UnorderedSet<ActivityCreatorId>,
-    activities: UnorderedMap<ActivityId, ActivityCreatorId>,
-    activity_tokens: LookupMap<ActivityId, UnorderedSet<TokenId>>,
-    token_activity: LookupMap<TokenId, ActivityId>,
-    activities_by_creators: LookupMap<ActivityCreatorId, Vec<ActivityId>>,
-    activity_token_metadata: LookupMap<ActivityId, TokenMetadata>,
 }
 
 #[near_bindgen]
@@ -50,7 +35,6 @@ impl Contract {
     pub fn new(owner_id: AccountId, metadata: NFTContractMetadata) -> Self {
         let contract = Self {
             owner: owner_id.clone(),
-            uuid: 0,
             token: NonFungibleToken::new(
                 StorageKey::NonFungibleToken,
                 owner_id,
@@ -59,12 +43,6 @@ impl Contract {
                 Some(StorageKey::Approval),
             ),
             metadata: LazyOption::new(StorageKey::Metadata, Some(&metadata)),
-            creator_whitelist: UnorderedSet::new(StorageKey::CreatorWhitelist),
-            activities: UnorderedMap::new(StorageKey::Activities),
-            activity_tokens: LookupMap::new(StorageKey::ActivityTokens),
-            token_activity: LookupMap::new(StorageKey::TokenActivity),
-            activities_by_creators: LookupMap::new(StorageKey::ActivitiesByCreators),
-            activity_token_metadata: LookupMap::new(StorageKey::ActivityTokenMetadata),
         };
         contract
     }
@@ -75,18 +53,6 @@ impl Contract {
             self.owner,
             "Owner must be predecessor"
         );
-    }
-
-    pub(crate) fn assign_activity_id(&mut self) -> ActivityId {
-        self.uuid += 1;
-        self.uuid.into()
-    }
-
-    pub(crate) fn internal_get_nft_metadata(&self, token_id: &TokenId) -> Option<TokenMetadata> {
-        self.token_activity
-            .get(&token_id)
-            // if token exist then use activity token metadata as token's metadata
-            .and_then(|activity_id| self.activity_token_metadata.get(&activity_id))
     }
 
     /// Check how much storage taken costs and refund the left over back.
@@ -112,10 +78,11 @@ impl Contract {
 
 #[cfg(all(test, not(target_arch = "wasm32")))]
 mod tests {
+    use std::collections::HashMap;
+
     use near_contract_standards::non_fungible_token::core::NonFungibleTokenCore;
     use near_sdk::test_utils::{accounts, VMContextBuilder};
     use near_sdk::testing_env;
-    use std::collections::HashMap;
 
     use super::*;
 

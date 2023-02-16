@@ -851,7 +851,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "oct-poap"
+name = "oct-accelerator-nft"
 version = "0.1.0"
 dependencies = [
  "itertools",

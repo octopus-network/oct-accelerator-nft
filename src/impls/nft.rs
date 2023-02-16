@@ -28,14 +28,7 @@ impl NonFungibleTokenCore for Contract {
     }
 
     fn nft_token(&self, token_id: TokenId) -> Option<Token> {
-        // self.token.nft_token(token_id)
-        self.token.nft_token(token_id).and_then(|mut token| {
-            self.internal_get_nft_metadata(&token.token_id)
-                .and_then(|token_metadata| {
-                    token.metadata = Some(token_metadata);
-                    Some(token)
-                })
-        })
+        self.token.nft_token(token_id)
     }
 }
 
@@ -46,14 +39,7 @@ impl NonFungibleTokenEnumeration for Contract {
     }
 
     fn nft_tokens(&self, from_index: Option<U128>, limit: Option<u64>) -> Vec<Token> {
-        self.token
-            .nft_tokens(from_index, limit)
-            .into_iter()
-            .map(|mut token| {
-                token.metadata = self.internal_get_nft_metadata(&token.token_id);
-                token
-            })
-            .collect()
+        self.token.nft_tokens(from_index, limit)
     }
 
     fn nft_supply_for_owner(&self, account_id: AccountId) -> U128 {
@@ -68,12 +54,6 @@ impl NonFungibleTokenEnumeration for Contract {
     ) -> Vec<Token> {
         self.token
             .nft_tokens_for_owner(account_id, from_index, limit)
-            .into_iter()
-            .map(|mut token| {
-                token.metadata = self.internal_get_nft_metadata(&token.token_id);
-                token
-            })
-            .collect()
     }
 }
 
