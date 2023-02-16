@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-NFT_ACCOUNT_ID=nft.xsb.testnet
+NFT_ACCOUNT_ID=oct-accelerator-nft.near
 NFT_CONTRACT_ACCOUNT_ID=$NFT_ACCOUNT_ID
 
 ONE_YOCTO=0.000000000000000000000001

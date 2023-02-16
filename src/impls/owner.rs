@@ -14,6 +14,7 @@ impl OwnerAction for Contract {
         self.metadata.set(&metadata)
     }
 
+    #[payable]
     fn batch_mint_nfts(
         &mut self,
         base_metadata: TokenMetadata,

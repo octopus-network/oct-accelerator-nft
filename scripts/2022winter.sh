@@ -1,0 +1,32 @@
+near call oct-accelerator-nft.near batch_mint_nfts \
+'{"base_metadata": {"title": "Octopus Network Accelerator Winter 2022 NFT"},
+"owner_and_tokens": [
+[ "muxkiller.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/muxkiller.near.png"}],
+[ "de3verse.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/de3verse.near.png"}],
+[ "sadiqisiaka.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/sadiqisiaka.near.png"}],
+[ "mojeezy.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/mojeezy.near.png"}],
+[ "jhoey.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/jhoey.near.png"}],
+[ "0418b4594af7945096301e6509dc04e3520ba85a8fcb9d58bd8017353e1a73c7", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/0418b4594af7945096301e6509dc04e3520ba85a8fcb9d58bd8017353e1a73c7.png"}],
+[ "40c7085d34d3902dcd757d4ed10383214d21e9ccc001b91b9f944faf93966f21", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/40c7085d34d3902dcd757d4ed10383214d21e9ccc001b91b9f944faf93966f21.png"}],
+[ "29d0bc8e754009beeec8c0134f7f84387b24b35e0e5be87f24027f8d04d4867a", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/29d0bc8e754009beeec8c0134f7f84387b24b35e0e5be87f24027f8d04d4867a.png"}],
+[ "52e263a4d0063badfb0db1e4f8c07aeaad1fe1567d0d22538b6a89b6aed3146d", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/52e263a4d0063badfb0db1e4f8c07aeaad1fe1567d0d22538b6a89b6aed3146d.png"}],
+[ "jbeltranvg.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/jbeltranvg.near.png"}],
+[ "60921200155e4654c794728a6022198f2895d2f8b9b92e253764aca31f874ec9", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/60921200155e4654c794728a6022198f2895d2f8b9b92e253764aca31f874ec9.png"}],
+[ "jilt.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/jilt.near.png"}],
+[ "boxmints.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/boxmints.near.png"}],
+[ "9bb49ed12fa6e1fd6e2129ad3e6ef209841b539317c851c7fc071644315d97a0", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/9bb49ed12fa6e1fd6e2129ad3e6ef209841b539317c851c7fc071644315d97a0.png"}],
+[ "f0eda1d1d568dd4d8470e26ea4cd06dee40536718caee534be73296478d16b78", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/f0eda1d1d568dd4d8470e26ea4cd06dee40536718caee534be73296478d16b78.png"}],
+[ "623b31de9d5af844f25b10ff803e240661e0b925ba5b02aa28e37960c6421741", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/623b31de9d5af844f25b10ff803e240661e0b925ba5b02aa28e37960c6421741.png"}],
+[ "black-history-dao-committee.sputnik-dao.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/black-history-dao-committee.sputnik-dao.near.png"}],
+[ "seshat.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/seshat.near.png"}],
+[ "c3276ada840121b98184ded64e15f3a5fe71685b7aee139c440da88de8b2b9d3", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/c3276ada840121b98184ded64e15f3a5fe71685b7aee139c440da88de8b2b9d3.png"}],
+[ "558c1a12d41a0f3a0dc0f9a5ac7c3b3e7cef68382e2444549b6dba1816cdb2c4", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/558c1a12d41a0f3a0dc0f9a5ac7c3b3e7cef68382e2444549b6dba1816cdb2c4.png"}],
+[ "kerimberdi.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/kerimberdi.near.png"}],
+[ "ba1d62cbfa2959bb36507cd50a70e6392cfd5824aba8a75bb97c51d1eac92c1c", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/ba1d62cbfa2959bb36507cd50a70e6392cfd5824aba8a75bb97c51d1eac92c1c.png"}],
+[ "cc2999eb127d654d4f1479cd997cb077196f330ce0eea06f8be200953bfe6f53", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/cc2999eb127d654d4f1479cd997cb077196f330ce0eea06f8be200953bfe6f53.png"}],
+[ "ba14509c51ff147c22251b46d5663c2c8f69fb1d06a664a4085256f8cb4a99c9", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/ba14509c51ff147c22251b46d5663c2c8f69fb1d06a664a4085256f8cb4a99c9.png"}],
+[ "fastolpen.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/fastolpen.near.png"}],
+[ "frac.near", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/frac.near.png"}],
+[ "a81522a329e27be4136d1dedb132b5bb0b109601ecbbaa5245f5813650603ab6", {"media": "https://raw.githubusercontent.com/octopus-network/oct-accelerator-nft/main/images/a81522a329e27be4136d1dedb132b5bb0b109601ecbbaa5245f5813650603ab6.png"}]
+]}'  \
+--accountId oct-accelerator-nft.near --deposit 0.1 --gas 300000000000000

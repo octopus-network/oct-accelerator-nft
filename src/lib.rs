@@ -17,6 +17,7 @@ mod utils;
 enum StorageKey {
     NonFungibleToken,
     Metadata,
+    TokenMetadata,
     Enumeration,
     Approval,
 }
@@ -38,7 +39,7 @@ impl Contract {
             token: NonFungibleToken::new(
                 StorageKey::NonFungibleToken,
                 owner_id,
-                None::<StorageKey>,
+                Some(StorageKey::TokenMetadata),
                 Some(StorageKey::Enumeration),
                 Some(StorageKey::Approval),
             ),
